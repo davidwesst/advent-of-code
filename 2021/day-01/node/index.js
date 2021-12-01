@@ -43,9 +43,26 @@ const part1 = async function() {
     Part 2
 */
 const part2 = async function() {
-    console.log('Yay!');
+    console.log('Yay! Part II');
+}
+
+/*
+    Utilities
+*/
+const printBanner = (title) => {
+    console.log(`
+        \n
+        *****************************************************
+
+        ${title}
+        
+        *****************************************************
+        \n
+    `);
 }
 
 // run it
+printBanner("[Node] Day 1 - Part I");
 await part1();
+printBanner("[Node] Day 1 - Part II");
 await part2();
