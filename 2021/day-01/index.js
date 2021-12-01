@@ -5,11 +5,31 @@ try {
     const filePromise = readFile(new URL(`./input.txt`, import.meta.url), { encoding: 'utf-8'});
     const data = await filePromise;
     const depths = data.split('\n');
-    console.log(depths);
+
+    let increasedDepthCount = 0;
+    let decreasedDepthCount = 0;
 
     // analyze the data
+    for (let index = 1; index < depths.length; index++) {
+        const element = parseInt(depths[index]);
+        const prevElement = parseInt(depths[index-1]);
+
+        if(!Number.isNaN(element) && !Number.isNaN(prevElement)) {
+            if(element < prevElement) {
+                decreasedDepthCount++;
+                console.log(`${element} (decreased)`)
+            }
+            else {
+                increasedDepthCount++;
+                console.log(`${element} (increased)`)
+            }
+        }
+    }
 
     // display the results
+    console.log(`Increased: ${increasedDepthCount}`);
+    console.log(`Decreased: ${decreasedDepthCount}`);
+
 } catch (err) {
     console.error(err);
 }
