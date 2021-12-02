@@ -1,11 +1,12 @@
-import { readFile } from 'fs/promises';
+import { readFileByLine } from '../utils/extract-input.js';
 
 /*
     Part 1
 */
 const part1 = async function(showAnalysis = false) {
     try {
-        const depths = await extractDepths();
+        const fileURL = new URL(`./input.txt`, import.meta.url);
+        const depths = await readFileByLine(fileURL);
 
         let increasedDepthCount = 0;
         let decreasedDepthCount = 0;
@@ -42,7 +43,8 @@ const part1 = async function(showAnalysis = false) {
     Part 2
 */
 const part2 = async function(showAnalysis = false) {
-    const depths = await extractDepths();
+    const fileURL = new URL(`./input.txt`, import.meta.url);
+    const depths = await readFileByLine(fileURL);
 
     let sums = [];
 
@@ -92,19 +94,6 @@ const part2 = async function(showAnalysis = false) {
 /*
     Utilities
 */
-
-/**
- * Extract the depth data from the file provided.
- * @returns {Array<Number>} Array of values pulled from the data file.
- */
-const extractDepths = async function() {
-    // extract the depth data
-    const filePromise = readFile(new URL(`./input.txt`, import.meta.url), { encoding: 'utf-8'});
-    const data = await filePromise;
-    const depths = data.split('\n');
-
-    return depths;
-}
 
 /**
  * Display a banner of stars and a message to mark the start of a new part.
