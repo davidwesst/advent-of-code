@@ -1,4 +1,5 @@
-import { readFileByLine } from '../utils/extract-input.js';
+import { readFileByLine } from '../utils/input.js';
+import { printBanner } from '../utils/print.js';
 
 /*
     Part 1
@@ -89,26 +90,6 @@ const part2 = async function(showAnalysis = false) {
     console.log(`Increased: ${increasedDepthCount}`);
     console.log(`No Change: ${noChangeDepthCount}`);
     console.log(`Decreased: ${decreasedDepthCount}`);
-}
-
-/*
-    Utilities
-*/
-
-/**
- * Display a banner of stars and a message to mark the start of a new part.
- * @param {String} title Message to display in the banner.
- */
-const printBanner = (title) => {
-    console.log(`
-        \n
-        *****************************************************
-
-        ${title}
-
-        *****************************************************
-        \n
-    `);
 }
 
 // run it
