@@ -1,0 +1,8 @@
+# Build dirs and files
+build
+*.out
+
+# Vim tmp files
+*.swo
+*.swp
+
