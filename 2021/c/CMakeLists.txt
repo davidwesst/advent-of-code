@@ -15,6 +15,7 @@ endif()
 # Selected solutions
 set(solutions
 	"2101.c"
+	"2103.c"
 )
 
 # Build all selected solutions
