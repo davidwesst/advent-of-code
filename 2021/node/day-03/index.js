@@ -88,7 +88,7 @@ const part1 = async function(showWork = false) {
 
 const part2 = async function(showWork = false) {
     // output banner
-    printBanner('Day 3, Part I');
+    printBanner('Day 3, Part II');
 
     // read input and group into columns
     const fileURL = new URL(`./input.txt`, import.meta.url);
@@ -163,4 +163,4 @@ const part2 = async function(showWork = false) {
 }
 
 await part1();
-await part2(true);
+await part2();
