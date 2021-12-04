@@ -12,3 +12,24 @@ export async function readFileByLine(fileURL) {
 
     return Promise.resolve(lines);
 }
+
+/**
+ * Transforms an array of rows into an array of columns. 
+ * @param {Array<String>} rows rows of data that should be turned into columns 
+ */
+export function columnize(rows) {
+    let transformedArray = [];
+
+    for (let index = 0; index < rows.length; index++) {
+        let currRow = rows[index];
+        
+        for(let col = 0; col < currRow.length; col++) {
+            if(transformedArray[col] === undefined) {
+                transformedArray[col] = '';
+            }
+            transformedArray[col] += currRow.charAt(col);
+        }
+    }
+
+    return transformedArray;
+}
