@@ -101,9 +101,12 @@ const part2 = async function(showWork = false) {
     
     // oxygen generator rating
     let o2rating = [...rawData];
-    columizedData.forEach( (element, index) => {
+    for (let index = 0; index < columizedData.length; index++) {
+        // get data columns
+        const columns = columnize(o2rating);
+
         // trim values based on most common bit
-        const commonBit = mostCommonBit(element);
+        const commonBit = mostCommonBit(columns[index]);
 
         if(commonBit == 1 || commonBit == -1) {
             // trim the zeros, because 1 is most common
@@ -115,12 +118,48 @@ const part2 = async function(showWork = false) {
         }
 
         if(showWork) {
+            console.log('O2 Generator Rating');
             console.log(`Most Common Bit: ${commonBit}, Index: ${index}`);
             console.log(o2rating);
         }
-    });
+        
+    }
 
-    // 
+    //co2 scrubber rating
+    let scrubberRating = [...rawData];
+    for (let index = 0; index < columizedData.length; index++) {
+        // get data columns
+        const columns = columnize(scrubberRating);
+
+        // trim values based on most common bit
+        const commonBit = mostCommonBit(columns[index]);
+
+        if(commonBit == 1 || commonBit == -1) {
+            // trim the ones, because 0 is least common)
+            scrubberRating = scrubberRating.filter(value => value.charAt(index) == '0');
+        }
+        else {
+            // trim the zeros
+            scrubberRating = scrubberRating.filter(value => value.charAt(index) == '1');
+        }
+
+        if(showWork) {
+            console.log('CO2 Scrubber Rating');
+            console.log(`Most Common Bit: ${commonBit}, Index: ${index}`);
+            console.log(scrubberRating);
+        }
+
+        if(scrubberRating.length == 1) {
+            break;
+        }
+    };
+
+    // output answer
+    let o2RatingAnswer = parseInt(o2rating[0], 2);
+    let co2RatingAnswer = parseInt(scrubberRating[0], 2);
+    console.log(`O2 Generator Rating: ${o2RatingAnswer}`);
+    console.log(`CO2 Scrubber Rating: ${co2RatingAnswer}`);
+    console.log(`Answer: ${o2RatingAnswer * co2RatingAnswer}`);
 }
 
 await part1();
