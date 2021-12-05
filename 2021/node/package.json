@@ -9,6 +9,7 @@
     "day-01": "DAY=01 npm start",
     "day-02": "DAY=02 npm start",
     "day-03": "DAY=03 npm start",
+    "day-04": "DAY=04 npm start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "David Wesst <david@cocobokostudios.com>",
